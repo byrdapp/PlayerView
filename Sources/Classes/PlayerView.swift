@@ -223,12 +223,10 @@ open class PlayerView: UIView {
     
     public func play() {
         rate = 1
-        // player?.play()
     }
     
     public func pause() {
         rate = 0
-        // player?.pause()
     }
     
     public func stop() {
@@ -248,7 +246,6 @@ open class PlayerView: UIView {
         player.pause()
         
         removeObserversPlayer(player)
-        // print("removing observers...")
         if let playerItem = player.currentItem {
             removeObserversVideoItem(playerItem: playerItem)
         }
@@ -315,7 +312,6 @@ open class PlayerView: UIView {
     
     public var urls: [URL]? {
         willSet(newUrls) {
-            // print("willSet urls")
             resetPlayer()
             guard let urls = newUrls else {
                 return
@@ -334,7 +330,6 @@ open class PlayerView: UIView {
             
             let playerItem = avPlayer.currentItem!
             
-            // print("adding observers")
             addObserversPlayer(avPlayer)
             addObserversVideoItem(playerItem)
             
@@ -345,15 +340,10 @@ open class PlayerView: UIView {
     public func addVideosOnQueue(_ urls: [URL], afterItem: PVPlayerItem? = nil) {
         // on last item on player
         let item = afterItem ?? player?.items().last
-        
         urlsQueue?.append(contentsOf: urls)
-        // for each url found
+
         urls.forEach({ url in
-            
-            // create a video item
             let itemNew = PVPlayerItem(url: url)
-            
-            // and insert the item on the player
             player?.insert(itemNew, after: item)
         })
     }
@@ -391,8 +381,10 @@ open class PlayerView: UIView {
     fileprivate var rateContext = true
     fileprivate var playerItemContext = true
     
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        // print("CHANGE",keyPath)
+    open override func observeValue(forKeyPath keyPath: String?,
+                                    of object: Any?,
+                                    change: [NSKeyValueChangeKey: Any]?,
+                                    context: UnsafeMutableRawPointer?) {
         
         if context == &statusContext {
             guard let avPlayer = player else {
@@ -400,9 +392,6 @@ open class PlayerView: UIView {
                 return
             }
             delegate?.playerVideo(self, statusPlayer: avPlayer.status, error: avPlayer.error)
-            // self.delegate?.playerVideo(player: self, statusItemPlayer: PVPlayer.status, error: avPlayer.error)
-            
-            //            self.delegate?.playerVideo(player: self, statusItemPlayer: avPlayer.status, error: avPlayer.error)
             
         } else if context == &loadedContext {
             let playerItem = player?.currentItem
@@ -436,7 +425,6 @@ open class PlayerView: UIView {
                 addCurrentTimeObserver()
             }
             
-            // self.delegate?.playerVideo(self, rate: newRate)
             delegate?.playerVideo(player: self, rate: newRate)
             
         } else if context == &playerItemContext {
