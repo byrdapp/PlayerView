@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,23 +18,24 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PlayerView" customModule="PlayerView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hYE-zt-7G1">
-                                <rect key="frame" x="26" y="562" width="548" height="31"/>
+                                <rect key="frame" x="22" y="629" width="331" height="31"/>
                                 <connections>
+                                    <action selector="sliderBegin:" destination="BYZ-38-t0r" eventType="valueChanged" id="3cc-V8-iNb"/>
                                     <action selector="sliderBegin:" destination="BYZ-38-t0r" eventType="touchDown" id="foL-IQ-hVE"/>
-                                    <action selector="sliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="KGQ-rz-RRl"/>
+                                    <action selector="sliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="mGT-D1-iiC"/>
                                     <action selector="sliderEnd:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="vMm-hN-ayj"/>
                                     <action selector="sliderEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yD9-DU-5xp"/>
                                 </connections>
                             </slider>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-HG-lqI">
-                                <rect key="frame" x="28" y="552" width="544" height="2"/>
+                                <rect key="frame" x="24" y="619" width="327" height="2"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH4-hc-XeL">
-                                <rect key="frame" x="28" y="504" width="40" height="40"/>
+                                <rect key="frame" x="24" y="571" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qze-gD-ste"/>
                                     <constraint firstAttribute="width" constant="40" id="vvS-Du-wz8"/>
@@ -43,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWI-Uo-hGv">
-                                <rect key="frame" x="76" y="504" width="40" height="40"/>
+                                <rect key="frame" x="72" y="571" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="aaE-0F-ePS"/>
                                     <constraint firstAttribute="height" constant="40" id="rIt-Yo-u56"/>
@@ -54,7 +58,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oci-dp-wwi">
-                                <rect key="frame" x="124" y="504" width="40" height="40"/>
+                                <rect key="frame" x="120" y="571" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EYZ-9S-kZD"/>
                                     <constraint firstAttribute="width" constant="40" id="Sv3-86-UNW"/>
@@ -65,13 +69,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-2q-Vtg">
-                                <rect key="frame" x="561" y="523" width="19" height="21"/>
+                                <rect key="frame" x="340" y="590" width="19" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="V7e-2q-Vtg" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="4pE-kJ-Yak"/>
                             <constraint firstItem="Ue6-HG-lqI" firstAttribute="top" secondItem="V7e-2q-Vtg" secondAttribute="bottom" constant="8" id="74b-dT-Wj8"/>

@@ -1,5 +1,5 @@
 PODS:
-  - PlayerView (0.1.0)
+  - PlayerView (0.2.7)
 
 DEPENDENCIES:
   - PlayerView (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PlayerView: 4252c1cb2fae5e3d81667dde971dc3a56d83d540
+  PlayerView: 0d47ae199e7d5385628a525348e5e56658b9205b
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 4aacafa1c51d70f69ccf0299a8a797f25bf07815
+
+COCOAPODS: 1.5.3

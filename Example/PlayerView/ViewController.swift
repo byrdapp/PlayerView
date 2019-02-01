@@ -12,7 +12,7 @@ import AVFoundation
 
 
 private extension Selector {
-    static let changeFill = #selector(ViewController.changeFill(_:))
+    static let changeFill = #selector(ViewController.changeFill(sender:))
 }
 
 
@@ -36,49 +36,40 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         playerVideo.delegate = self
         let url1 = NSURL(string: "http://techslides.com/demos/sample-videos/small.mp4")!
-        let url = NSURL(string: "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_30mb.mp4")!
-        
-        //playerVideo.url = url
-        
-        playerVideo.urls = [url1,url1]
+//        let url = NSURL(string: "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_30mb.mp4")!
+
+        playerVideo.urls = [url1,url1] as [URL]
         playerVideo.loopVideosQueue = true
         playerVideo.play()
-        //playerVideo.addVideosOnQueue(urls: [url])
+
         tap.numberOfTapsRequired = 2
         tap.addTarget(self, action: .changeFill)
         view.addGestureRecognizer(tap)
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func sliderChange(sender: UISlider) {
-        //print(sender.value)
-        
+    @IBAction func sliderChange(_ sender: UISlider) {
         playerVideo.currentTime = Double(sender.value)
     }
     
-    @IBAction func sliderBegin(sender: AnyObject) {
+    @IBAction func sliderBegin(_ sender: UISlider) {
         print("beginEdit")
         isEditingSlider = true
     }
     
-    @IBAction func sliderEnd(sender: AnyObject) {
+    @IBAction func sliderEnd(_ sender: Any) {
         print("endEdit")
         isEditingSlider = false
     }
     
     
     
-    @IBAction func backwardTouch(sender: AnyObject) {
+    @IBAction func backwardTouch(_ sender: Any) {
         playerVideo.rate = playerVideo.rate - 0.5
     }
     
-    @IBAction func playTouch(sender: AnyObject) {
+    @IBAction func playTouch(_ sender: Any) {
         if playerVideo.rate == 0 {
             playerVideo.play()
         } else {
@@ -86,42 +77,32 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func fowardTouch(sender: AnyObject) {
+    @IBAction func fowardTouch(_ sender: Any) {
         playerVideo.rate = playerVideo.rate + 0.5
     }
     
-    func changeFill(sender: AnyObject) {
+   @objc func changeFill(sender: AnyObject) {
         switch playerVideo.fillMode {
-        case .Some(.ResizeAspect):
-                playerVideo.fillMode = .ResizeAspectFill
-        case .Some(.ResizeAspectFill):
-            playerVideo.fillMode = .Resize
-        case .Some(.Resize):
-            playerVideo.fillMode = .ResizeAspect
+        case .some(.resizeAspect):
+                playerVideo.fillMode = .resizeAspectFill
+        case .some(.resizeAspectFill):
+            playerVideo.fillMode = .resize
+        case .some(.resize):
+            playerVideo.fillMode = .resizeAspect
         default:
             break
         }
     }
-    override func loadView() {
-        super.loadView()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }
 
 
 extension ViewController: PlayerViewDelegate {
     
-    func playerVideo(player: PlayerView, statusPlayer: PVStatus, error: NSError?) {
+    func playerVideo(player: PlayerView, statusPlayer: PVStatus, error: Error?) {
         print(statusPlayer)
     }
     
-    func playerVideo(player: PlayerView, statusItemPlayer: PVItemStatus, error: NSError?) {
+    func playerVideo(player: PlayerView, statusItemPlayer: PVItemStatus, error: Error?) {
         
     }
     func playerVideo(player: PlayerView, loadedTimeRanges: [PVTimeRange]) {
@@ -130,16 +111,14 @@ extension ViewController: PlayerViewDelegate {
             return actual + range.end.seconds
         }
         let dur2 = Float(durationTotal)
-        let progress = dur2 / duration
+        let progress = dur2 / 1
         progressBar?.progress = progress
         
         if loadedTimeRanges.count > 1 {
             print(loadedTimeRanges.count)
         }
-        //print("progress",progress)
     }
     func playerVideo(player: PlayerView, duration: Double) {
-        //print(duration.seconds)
         self.duration = Float(duration)
         slider?.maximumValue = Float(duration)
     }
@@ -148,7 +127,6 @@ extension ViewController: PlayerViewDelegate {
         if !isEditingSlider {
             slider.value = Float(currentTime)
         }
-        //print("curentTime",currentTime)
     }
     
     func playerVideo(player: PlayerView, rate: Float) {
@@ -159,10 +137,7 @@ extension ViewController: PlayerViewDelegate {
         
         let buttonImage = UIImage(named: buttonImageName)
         
-        playButton.setImage(buttonImage, forState: .Normal)
-        
-        //slider.value = Float(currentTime)
-        //print(currentTime.seconds)
+        playButton.setImage(buttonImage, for: .normal)
     }
     
     func playerVideo(playerFinished player: PlayerView) {
