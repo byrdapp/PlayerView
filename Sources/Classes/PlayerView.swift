@@ -76,7 +76,7 @@ public enum PlayerViewFillMode {
 }
 
 open class PlayerView: UIView {
-    var playerLayer: AVPlayerLayer {
+    public var playerLayer: AVPlayerLayer {
         return self.layer as! AVPlayerLayer
     }
     
@@ -158,7 +158,7 @@ open class PlayerView: UIView {
     /**
      Add all observers for a PVPlayer
      */
-    func addObserversPlayer(_ avPlayer: PVPlayer) {
+    public  func addObserversPlayer(_ avPlayer: PVPlayer) {
         avPlayer.addObserver(self, forKeyPath: "status", options: [.new], context: &statusContext)
         avPlayer.addObserver(self, forKeyPath: "rate", options: [.new], context: &rateContext)
         avPlayer.addObserver(self, forKeyPath: "currentItem", options: [.old, .new], context: &playerItemContext)
@@ -167,7 +167,7 @@ open class PlayerView: UIView {
     /**
      Remove all observers for a PVPlayer
      */
-    func removeObserversPlayer(_ avPlayer: PVPlayer) {
+    public  func removeObserversPlayer(_ avPlayer: PVPlayer) {
         avPlayer.removeObserver(self, forKeyPath: "status", context: &statusContext)
         avPlayer.removeObserver(self, forKeyPath: "rate", context: &rateContext)
         avPlayer.removeObserver(self, forKeyPath: "currentItem", context: &playerItemContext)
@@ -177,28 +177,28 @@ open class PlayerView: UIView {
         }
     }
     
-    func addObserversVideoItem(_ playerItem: PVPlayerItem) {
+    public func addObserversVideoItem(_ playerItem: PVPlayerItem) {
         playerItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: [], context: &loadedContext)
         playerItem.addObserver(self, forKeyPath: "duration", options: [], context: &durationContext)
         playerItem.addObserver(self, forKeyPath: "status", options: [], context: &statusItemContext)
         NotificationCenter.default.addObserver(self, selector: .playerItemDidPlayToEndTime, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
     
-    func removeObserversVideoItem(playerItem: PVPlayerItem) {
+    public func removeObserversVideoItem(playerItem: PVPlayerItem) {
         playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges", context: &loadedContext)
         playerItem.removeObserver(self, forKeyPath: "duration", context: &durationContext)
         playerItem.removeObserver(self, forKeyPath: "status", context: &statusItemContext)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
     
-    func removeCurrentTimeObserver() {
+    public func removeCurrentTimeObserver() {
         if let timeObserverToken = self.timeObserverToken {
             lastPlayerTimeObserve?.removeTimeObserver(timeObserverToken)
         }
         timeObserverToken = nil
     }
     
-    func addCurrentTimeObserver() {
+    public func addCurrentTimeObserver() {
         removeCurrentTimeObserver()
         
         lastPlayerTimeObserve = player
