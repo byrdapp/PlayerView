@@ -1,15 +1,10 @@
-#
-# Be sure to run `pod lib lint PlayerView.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
+
 
 Pod::Spec.new do |s|
   s.name             = "PlayerView"
-  s.version          = "0.2.7"
+  s.version          = "0.2.8"
   s.summary          = "A UIView for videos using AVPlayer with delegate"
+  s.swift_version    = '4.0'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
