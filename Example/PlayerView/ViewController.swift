@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         playerVideo.urls = [url1,url1] as [URL]
         playerVideo.loopVideosQueue = true
         playerVideo.play()
+        playerVideo.resetPlayer()
 
         tap.numberOfTapsRequired = 2
         tap.addTarget(self, action: .changeFill)
