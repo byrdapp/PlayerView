@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
                         This Library allows to set a video on a custom UIView by setting the callbacks on a delegate for easy use. this View implements the AVPlayer from AVFoundation
                        DESC
 
-  s.homepage         = "https://github.com/davidlondono/PlayerView"
+  s.homepage         = "https://github.com/byrdapp/PlayerView"
   s.license          = 'MIT'
   s.author           = { "David Alejandro" => "davidlondono9@gmail.com" }
-  s.source           = { :git => "https://github.com/davidlondono/PlayerView.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/byrdapp/PlayerView.git", :tag => s.version }
   s.social_media_url = 'https://twitter.com/davidlondono'
 
   s.platform     = :ios, '9.0'
